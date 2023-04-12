@@ -1,0 +1,197 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Custom style */
+
+body{
+    background-color: rgb(17, 24, 29);
+}
+
+h1{
+    color: white;
+}
+
+label{
+    color: white;
+}
+
+.input-option{
+    margin-top: 20px;
+}
+
+/* From https://codepen.io/jasonwoan/pen/abJKZW */
+/* ======================= */
+.range {
+    /* -webkit-appearance: none; */
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+
+  .range::-webkit-slider-runnable-track {
+    background-color: #d7dbdd;
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+  }
+
+  .range::-moz-range-track {
+    background-color: #d7dbdd;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+  }
+  
+  .range::-ms-track {
+    color: transparent;
+    border: none;
+    background: none;
+    height: 6px;
+  }
+  
+  .range::-ms-fill-lower { 
+    background-color: #d7dbdd;
+    border-radius: 3px;
+  }
+  
+  .range::-ms-fill-upper { 
+    background-color: #d7dbdd;
+    border-radius: 3px;
+  }
+  
+  .range::-ms-tooltip { display: none; /* display and visibility only */ }
+  
+  .range::-moz-range-thumb {
+    border-radius: 20px;
+    height: 18px;
+    width: 18px;
+    border: none;
+    background: none;
+    background-color: #606670;
+  }
+  
+  .range:active::-moz-range-thumb {
+    outline: none;
+  }
+  
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    border-radius: 100%;
+    background-color: #606670;
+    height: 18px;
+    width: 18px;
+    margin-top: -7px;
+  }
+
+  .range:active::-webkit-slider-thumb {
+    outline: none;
+  }
+  
+  .range::-ms-thumb { 
+    border-radius: 100%;
+    background-color: #606670;
+    height: 18px;
+    width: 18px; 
+    border: none;
+  }
+  
+  .range:active::-ms-thumb {
+    border: none;
+  }
+  
+  output {
+    border: 1px solid #d7dbdd;
+    color: #333;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    padding: .4em .6em;
+    border-radius: 3px;
+  }
+
+  .range::-webkit-slider-runnable-track {
+    background-color: #606670;
+  }
+
+  .range::-moz-range-track {
+    background-color: #606670;
+    border: none;
+  }
+  
+  .range::-ms-fill-lower { 
+    background-color: #606670;
+  }
+
+  .range::-ms-fill-upper { 
+    background-color: #606670;
+  }
+  
+  output {
+    border: 1px solid #2b3039;
+    color: #aaa;
+    font-size: 12px;
+    padding: .4em .6em;
+    border-radius: 3px;
+  }
+  
+  .range::-webkit-slider-thumb {
+    background-color: #aaa;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+  }
+
+  .range::-moz-range-thumb {
+    background-color: #aaa;
+  }
+  
+  .range::-ms-thumb { 
+    background-color: #aaa;
+  }
+
+  /* ======================= */

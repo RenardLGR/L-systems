@@ -1,3 +1,21 @@
+const rangeInputs = document.querySelectorAll('input')
+rangeInputs.forEach(input => {
+    input.addEventListener('mousemove', setOutput)
+})
+
+
+function setOutput(event){
+    angle = document.querySelector('#angleVal').value
+    childLength = document.querySelector('#childLenVal').value/100
+    nChildrenPerGen = document.querySelector('#nChildPerGenVal').value
+
+    console.log(angle, childLength, nChildrenPerGen);
+}
+
+let angle = 25
+let childLength = 66/100
+let nChildrenPerGen = 2
+
 let theta
 let stemLength = 120
 
@@ -11,7 +29,7 @@ function draw() {
     frameRate(30)
     //Color of our lines
     stroke(156, 173, 58)
-    theta = radians(25)
+    theta = radians(angle)
 
 
     // Start the tree from the bottom of the screen
@@ -28,7 +46,7 @@ function draw() {
 
 function branch(length){
     //Each branch will be 2/3 the length of its parent
-    length = length*0.66
+    length = length*childLength
 
     // Stop creating branches if they are too small, base case recursion
     if(length>2){

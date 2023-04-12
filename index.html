@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L-systems</title>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
-    <script src="sketch.js"></script>
+    <title>L-system</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>L-systems</h1>
+    <h1>L-system</h1>
     <!-- The canvas will go inside that -->
     <main>
 
     </main>
-    <button>Add length</button>
+
+    <!-- Angle div range input -->
+    <div class="input-option">
+        <input class="range" type="range" min="-45" max="45" value="25" step="1" onmousemove="angleVal.value=value" />
+        <output id="angleVal">25</output>
+        <label for="angleVal">Angle</label>
+    </div>
+
+    <!-- Child length div range input -->
+    <div class="input-option">
+        <input class="range" type="range" min="0" max="100" value="66" step="1" onmousemove="childLenVal.value=value" />
+        <output id="childLenVal">66</output>
+        <label for="childLenVal">Child length %</label>
+    </div>
+
+    <!-- Number child/Generation range input -->
+    <div class="input-option">
+        <input class="range" type="range" min="1" max="10" value="2" step="1" onmousemove="nChildPerGenVal.value=value" />
+        <output id="nChildPerGenVal">2</output>
+        <label for="nChildPerGenVal">Number of children per generation</label>
+    </div>
+
+    <!-- Number of generation div range input -->
+    <div class="input-option">
+        <input class="range" type="range" min="1" max="10" value="0" step="1" onmousemove="rangevalue5.value=value" />
+        <output id="rangevalue5"></output>
+        <label for="rangevalue5">Number of generations</label>
+    </div>
+
+    <!-- Grammar div -->
+    <div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src="sketch.js"></script>
 </body>
+
 </html>
