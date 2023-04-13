@@ -1,41 +1,42 @@
 const rangeInputs = document.querySelectorAll('input')
 rangeInputs.forEach(input => {
-    input.addEventListener('mousemove', setOutput)
+    input.addEventListener('mousemove', setValues)
 })
 
 
-function setOutput(event){
+function setValues(event){
     angle = document.querySelector('#angleVal').value
     childLength = document.querySelector('#childLenVal').value/100
     nChildrenPerGen = document.querySelector('#nChildPerGenVal').value
-
-    console.log(angle, childLength, nChildrenPerGen);
+    let nGeneration = document.querySelector('#nGenerationVal').value
+    minLength = stemLength * Math.pow(childLength, nGeneration)
 }
 
 let angle = 25
 let childLength = 66/100
 let nChildrenPerGen = 2
+let minLength = 2
 
 let theta
-let stemLength = 120
+let stemLength = 180
 
 function setup() {
-    createCanvas(710, 400);
+    createCanvas(1136, 640);
 }
 
 function draw() {
     //Canvas set up
     background(0);
-    frameRate(30)
+    frameRate(20)
     //Color of our lines
-    stroke(156, 173, 58)
+    stroke('rgb(156, 173, 58)')
     theta = radians(angle)
 
 
     // Start the tree from the bottom of the screen
     translate(width / 2, height);
-    rotate(theta)
-    // Draw a line 120 pixels
+    // rotate(theta)
+    // Draw a line of stemLength pixels
     line(0, 0, 0, -stemLength);
     // Move to the end of that line
     translate(0, -stemLength);
@@ -49,22 +50,35 @@ function branch(length){
     length = length*childLength
 
     // Stop creating branches if they are too small, base case recursion
-    if(length>2){
-        push();// Save the current state of transformation (i.e. where are we now)
+    if(length>minLength){
+
+        if(nChildrenPerGen%2===1){
+            //if odd number of children, there is a branch whis is a direct continuation of the stem
+            push()
+            line(0, 0, 0, -length); // Draw the branch
+            translate(0, -length); // Move to the end of the branch
+            branch(length); // Ok, now call myself to draw two new branches!!
+            pop();// Whenever we get back here, we "pop" in order to restore the previous matrix state
+        }
 
         //Right branch
-        rotate(theta); // Rotate by theta
-        line(0, 0, 0, -length); // Draw the branch
-        translate(0, -length); // Move to the end of the branch
-        branch(length); // Ok, now call myself to draw two new branches!!
-        pop();// Whenever we get back here, we "pop" in order to restore the previous matrix state
+        for(let i=1 ; i<=Math.floor(nChildrenPerGen/2) ; i++){
+            push()// Save the current state of transformation (i.e. where are we now)
+            rotate(theta*i); // Rotate by theta
+            line(0, 0, 0, -length); // Draw the branch
+            translate(0, -length); // Move to the end of the branch
+            branch(length); // Ok, now call myself to draw two new branches!!
+            pop();// Whenever we get back here, we "pop" in order to restore the previous matrix state
+        }
     
         // Repeat the same thing for the left branch
-        push();
-        rotate(-theta);
-        line(0, 0, 0, -length);
-        translate(0, -length);
-        branch(length);
-        pop();
+        for(let i=1 ; i<=Math.floor(nChildrenPerGen/2) ; i++){
+            push();
+            rotate(-theta*i);
+            line(0, 0, 0, -length);
+            translate(0, -length);
+            branch(length);
+            pop();
+        }
     }
 }
