@@ -6,49 +6,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L-system</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>L-system</h1>
+
+    <p>L-systems are formal grammars used to model the growth of complex structures like plants. They work by iteratively transforming a starting string of symbols according to production rules, creating self-similar patterns at different scales. This ability allows them to mimic the fractal-like structures found in nature. L-systems are popular tools for creating realistic simulations of natural phenomena.</p>
     
     <!-- The canvas will go inside that -->
     <main>
 
     </main>
 
-    <!-- Angle div range input -->
-    <div class="input-option">
-        <input class="range" type="range" min="-45" max="45" value="25" step="1" onmousemove="angleVal.value=value" />
-        <output id="angleVal">25</output>
-        <label for="angleVal">Angle</label>
-    </div>
+    <!-- Options -->
+    <section>
+        <!-- Angle div range input -->
+        <div class="input-option">
+            <button onclick="(() => {
+                angleValInput.value = Number(angleValInput.value) - 1
+                angleVal.value=angleValInput.value
+                redrawOnChange()
+            })()">-</button>
+            <input class="range" type="range" min="0" max="90" value="25" step="1" id="angleValInput" onmousemove="angleVal.value=value" />
+            <button onclick="(() => {
+                angleValInput.value = Number(angleValInput.value) + 1
+                angleVal.value=angleValInput.value
+                redrawOnChange()
+            })()">+</button>
+            <output id="angleVal">25</output>
+            <label>Angle</label>
+        </div>
+    
+        <!-- Child length div range input -->
+        <div class="input-option">
+            <button onclick="(() => {
+                childLenValInput.value = Number(childLenValInput.value) - 1
+                childLenVal.value=childLenValInput.value
+                redrawOnChange()
+            })()">-</button>
+            <input class="range" type="range" min="0" max="75" value="66" step="1" id="childLenValInput" onmousemove="childLenVal.value=value" />
+            <button onclick="(() => {
+                childLenValInput.value = Number(childLenValInput.value) + 1
+                childLenVal.value=childLenValInput.value
+                redrawOnChange()
+            })()">+</button>
+            <output id="childLenVal">66</output>
+            <label>Child length %</label>
+        </div>
+    
+        <!-- Number child/Generation range input -->
+        <div class="input-option">
+            <button onclick="(() => {
+                nChildPerGenValInput.value = Number(nChildPerGenValInput.value) - 1
+                nChildPerGenVal.value=nChildPerGenValInput.value
+                redrawOnChange()
+            })()">-</button>
+            <input class="range" type="range" min="1" max="7" value="2" step="1" id="nChildPerGenValInput" onmousemove="nChildPerGenVal.value=value" />
+            <button onclick="(() => {
+                nChildPerGenValInput.value = Number(nChildPerGenValInput.value) + 1
+                nChildPerGenVal.value=nChildPerGenValInput.value
+                redrawOnChange()
+            })()">+</button>
+            <output id="nChildPerGenVal">2</output>
+            <label>Number of children per generation</label>
+        </div>
+    
+        <!-- Number of generation div range input -->
+        <div class="input-option">
+            <button onclick="(() => {
+                nGenerationValInput.value = Number(nGenerationValInput.value) - 1
+                nGenerationVal.value=nGenerationValInput.value
+                redrawOnChange()
+            })()">-</button>
+            <input class="range" type="range" min="1" max="12" value="9" step="1" id="nGenerationValInput" onmousemove="nGenerationVal.value=value" />
+            <button onclick="(() => {
+                nGenerationValInput.value = Number(nGenerationValInput.value) + 1
+                nGenerationVal.value=nGenerationValInput.value
+                redrawOnChange()
+            })()">+</button>
+            <output id="nGenerationVal">9</output>
+            <label>Number of generations</label>
+        </div>
+    
+        <!-- Grammar div -->
+        <div>
+    
+        </div>
+    </section>
 
-    <!-- Child length div range input -->
-    <div class="input-option">
-        <input class="range" type="range" min="0" max="75" value="66" step="1" onmousemove="childLenVal.value=value" />
-        <output id="childLenVal">66</output>
-        <label for="childLenVal">Child length %</label>
-    </div>
-
-    <!-- Number child/Generation range input -->
-    <div class="input-option">
-        <input class="range" type="range" min="1" max="7" value="2" step="1" onmousemove="nChildPerGenVal.value=value" />
-        <output id="nChildPerGenVal">2</output>
-        <label for="nChildPerGenVal">Number of children per generation</label>
-    </div>
-
-    <!-- Number of generation div range input -->
-    <div class="input-option">
-        <input class="range" type="range" min="1" max="12" value="8" step="1" onmousemove="nGenerationVal.value=value" />
-        <output id="nGenerationVal">8</output>
-        <label for="nGenerationVal">Number of generations</label>
-    </div>
-
-    <!-- Grammar div -->
-    <div>
-
-    </div>
+    <button id="redrawBtn">Redraw</button>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
     <script src="sketch.js"></script>

@@ -1,15 +1,15 @@
 const rangeInputs = document.querySelectorAll('input')
 rangeInputs.forEach(input => {
-    input.addEventListener('mousemove', setValues)
+    input.addEventListener('change', redrawOnChange)
 })
 
-
-function setValues(event){
+function redrawOnChange(event){
     angle = document.querySelector('#angleVal').value
     childLength = document.querySelector('#childLenVal').value/100
     nChildrenPerGen = document.querySelector('#nChildPerGenVal').value
     let nGeneration = document.querySelector('#nGenerationVal').value
     minLength = stemLength * Math.pow(childLength, nGeneration)
+    redraw() //redraw is defined don't worry
 }
 
 let angle = 25
@@ -20,8 +20,13 @@ let minLength = 2
 let theta
 let stemLength = 180
 
+redrawOnChange()
+
+// P5js function below
 function setup() {
     createCanvas(1136, 640);
+    //No automatic redraw
+    noLoop()
 }
 
 function draw() {
@@ -50,7 +55,7 @@ function branch(length){
     length = length*childLength
 
     // Stop creating branches if they are too small, base case recursion
-    if(length>minLength){
+    if(length>=minLength){
 
         if(nChildrenPerGen%2===1){
             //if odd number of children, there is a branch whis is a direct continuation of the stem
