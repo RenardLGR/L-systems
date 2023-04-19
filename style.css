@@ -59,11 +59,12 @@ body{
 
 body > * {
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 h1{
-    color: white;
+  margin-top: 20px;
+  color: rgb(156, 173, 58);
     font-size: 5rem;
     font-weight: 700;
 }
@@ -77,6 +78,20 @@ p{
 label{
     color: white;
     font-size: 1.1rem;
+}
+
+.warning-div{
+  margin-top: 20px;
+}
+
+.warning-div > p{
+  font-size: 1rem;
+}
+
+.warning-div > p > span{
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgb(156, 173, 58);
 }
 
 button{
