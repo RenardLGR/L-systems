@@ -98,6 +98,7 @@ button{
     background-color: rgb(17, 24, 29);
     color: white;
     cursor: pointer;
+    margin: 0 10px;
 }
 
 .input-option{
